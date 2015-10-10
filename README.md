@@ -2,6 +2,14 @@
 
 Utility for building composable CLIs for cloud deployments, using minimist, cliopts, subcommand. Meant to be used alongside the "cloud" family of modules for deployments, for examples see tinycloud and icecloud.
 
+## install
+
+Add to your project with npm
+
+```
+npm install clicloud --save
+```
+
 ## usage
 
 To setup a command line tool for a `cloud`, first parse your arguments, then pass them to `init` alongside the `cloud`.
