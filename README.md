@@ -21,7 +21,7 @@ Here's a full example where we use `clicloud` to build a CLI for `tinycloud`
 #! /usr/bin/env node
 
 var clicloud = require('clicloud')
-var tinycloud = require('./index.js')
+var tinycloud = require('tinycloud')
 
 var cli = new clicloud()
 
@@ -37,7 +37,7 @@ var cloud = new tinycloud(args, groups)
 cli.init(args, cloud)
 ```
 
-See tinycloud and its CLI for more examples of the functionality.
+See tinycloud and its CLI for more examples of the resulting functionality.
 
 ## adding options
 
@@ -67,7 +67,7 @@ You'll now be able to use this command in your CLI, e.g.
 
 ```
 cloud launch --cooloption=yay
-``
+```
 
 ## adding actions
 
@@ -99,6 +99,6 @@ You'll now be able to use this command in your CLI, e.g.
 
 ```
 cloud sweetcommand
-``
+```
 
 When writing your commands, you can assume `input._` contains an array of `[args, cloud]`, where `args` are the output of `parse`.
