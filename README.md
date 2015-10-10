@@ -9,8 +9,10 @@ To setup a command line tool for a `cloud`, first parse your arguments, then pas
 ```
 var clicloud = require('clicloud')
 
-var args = clicloud.parse(process.argv)
-clicloud.init(args, cloud)
+var cli = new clicloud()
+
+var args = cli.parse(process.argv)
+cli.init(args, cloud)
 ```
 
 Here's a full example where we use `clicloud` to build a CLI for `tinycloud`
@@ -21,7 +23,9 @@ Here's a full example where we use `clicloud` to build a CLI for `tinycloud`
 var clicloud = require('clicloud')
 var tinycloud = require('./index.js')
 
-var args = clicloud.parse(process.argv)
+var cli = new clicloud()
+
+var args = cli.parse(process.argv)
 
 var groups = [
   {tag: 'master', count: 1},
@@ -30,16 +34,16 @@ var groups = [
 
 var cloud = new tinycloud(args, groups)
 
-clicloud.init(args, cloud)
+cli.init(args, cloud)
 ```
 
-This is how the CLI for tinycloud is built, see its usage there.
+See tinycloud and its CLI for more examples of the functionality.
 
 ## adding options
 
 Options are formatted in the `cliclopts` style, and it's easy to extend `clicloud` with your own.
 
-Just define `extra` with the desired option schema
+Just define `extra` with the desired options
 
 ```
 var extra = {
@@ -54,6 +58,10 @@ var extra = {
 ```
 
 And then include `extra` when constructing `clicloud`.
+
+```
+var cli = clicloud(extra)
+```
 
 You'll now be able to use this command in your CLI, e.g.
 
@@ -81,8 +89,16 @@ function go(input) {
 }
 ```
 
+And again include when constructing
+
+```
+var cli = clicloud(extra)
+```
+
 You'll now be able to use this command in your CLI, e.g.
 
 ```
 cloud sweetcommand
 ``
+
+When writing your commands, you can assume `input._` contains an array of `[args, cloud]`, where `args` are the output of `parse`.
