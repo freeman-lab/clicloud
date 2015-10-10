@@ -101,4 +101,4 @@ You'll now be able to use this command in your CLI, e.g.
 cloud sweetcommand
 ```
 
-When writing functions for you commands, `input._` will be an array with whatever you passed to `cli.init`, typically `args` and `cloud`, where `args` is the result of calling `cli.parse` and `cloud` is the result of calling `new tinycloud`.
+When writing functions for you commands, `input._` will be an array with whatever you passed to `cli.init(args, cloud)`, where typically `args`  is the result of calling `cli.parse` and `cloud` is the result of calling `new tinycloud`.
