@@ -31,7 +31,11 @@ Here's a full example where we use `clicloud` to build a CLI for `tinycloud`
 var clicloud = require('clicloud')
 var tinycloud = require('tinycloud')
 
-var cli = new clicloud()
+var opts = {
+	name: 'tinycloud'
+}
+
+var cli = new clicloud(opts)
 
 var args = cli.parse(process.argv)
 
@@ -47,14 +51,26 @@ cli.init(args, cloud)
 
 See tinycloud and its CLI for more examples of the resulting functionality.
 
+## custom name
+
+To give a custom name to your CLI, just provide one during construction
+
+```
+var opts = {
+	name: 'mycli'
+}
+
+var cli = new clicloud(opts)
+```
+
 ## adding options
 
 Options are formatted in the `cliclopts` style, and it's easy to extend `clicloud` with your own.
 
-Just define `extra` with the desired options
+Just define an object with the desired options
 
 ```
-var extra = {
+var opts = {
   options: [
     {
       name: 'cooloption',
@@ -65,10 +81,10 @@ var extra = {
 }
 ```
 
-And then include `extra` when constructing `clicloud`.
+And then include `opts` as a second argument during construction
 
 ```
-var cli = clicloud(extra)
+var cli = clicloud(opts)
 ```
 
 You'll now be able to use this command in your CLI, e.g.
@@ -77,12 +93,12 @@ You'll now be able to use this command in your CLI, e.g.
 cloud launch --cooloption=yay
 ```
 
-## adding actions
+## adding subcommands
 
-Adding actions is similarly easy, just add commands when defining `extra`:
+Adding subcommands is similarly easy, just add commands when defining `opts`:
 
 ```
-var extra = {
+var opts = {
   commands: [
     {
       name: 'sweetcommand',
@@ -100,13 +116,13 @@ function go(input) {
 And again include when constructing
 
 ```
-var cli = clicloud(extra)
+var cli = clicloud(opts)
 ```
 
-You'll now be able to use this command in your CLI, e.g.
+You'll now be able to use this subcommand in your CLI, e.g.
 
 ```
 cloud sweetcommand
 ```
 
-When writing functions for you commands, `input._` will be an array with whatever you passed to `cli.init(args, cloud)`, where typically `args`  is the result of calling `cli.parse` and `cloud` is the result of calling `new tinycloud`.
+When writing functions for you commands, `input._` will be an array with whatever you passed to `cli.init(args, cloud)`, where typically `args`  is the result of calling `cli.parse` and `cloud` is the result of calling `new tinycloud` or similar.
