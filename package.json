@@ -1,6 +1,6 @@
 {
   "name": "clicloud",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "composable cli for the cloud family",
   "main": "index.js",
   "scripts": {
