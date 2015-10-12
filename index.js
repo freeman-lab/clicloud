@@ -1,6 +1,7 @@
 var subcommand = require('subcommand')
 var cliclopts = require('cliclopts')
 var minimist = require('minimist')
+var spinner = require('simple-spinner');
 var _ = require('lodash')
 var options = require('./lib/options.js')
 var commands = require('./lib/commands.js')
@@ -50,12 +51,20 @@ CLI.prototype.init = function(args, cloud) {
     commands: commands
   }
 
-  cloud.on('progress', function(data) {
+  cloud.on('status', function(data) {
     log.message(data)
   })
 
   cloud.on('success', function(data) {
     log.success(data)
+  })
+
+  cloud.on('start', function() {
+    spinner.start(100, {hideCursor: true})
+  })
+
+  cloud.on('stop', function() {
+    spinner.stop()
   })
 
   var route = subcommand(config)
