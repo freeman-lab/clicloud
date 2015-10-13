@@ -60,7 +60,7 @@ CLI.prototype.init = function(args, cloud) {
   })
 
   cloud.on('start', function() {
-    spinner.start(100, {hideCursor: true})
+    spinner.start(100, {hideCursor: false})
   })
 
   cloud.on('stop', function() {
