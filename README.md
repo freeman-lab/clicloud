@@ -1,6 +1,6 @@
 # clicloud
 
-Utility for building composable CLIs for cloud deployments, using minimist, cliopts, subcommand. Meant to be used alongside the "cloud" family of modules for deployments, for examples see tinycloud and icecloud.
+Utility for building composable CLIs for cloud deployments, using [`minimist`](https://github.com/substack/minimist), [`cliopts`](https://github.com/finnp/cliclopts), and [`subcommand`](https://github.com/maxogden/subcommand). Meant to be used alongside the "cloud" family of modules for cluster deployments, for examples see [`tinycloud`](https://github.com/freeman-lab/tinycloud) and [`icecloud`](https://github.com/freeman-lab/icecloud).
 
 ## install
 
