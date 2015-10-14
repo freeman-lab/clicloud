@@ -14,7 +14,7 @@ npm install clicloud --save
 
 To setup a command line tool for a `cloud`, first parse your arguments, then pass them to `init` alongside the `cloud`.
 
-```
+``` js
 var clicloud = require('clicloud')
 
 var cli = new clicloud()
@@ -25,7 +25,7 @@ cli.init(args, cloud)
 
 Here's a full example where we use `clicloud` to build a CLI for `tinycloud`
 
-```
+``` js
 #! /usr/bin/env node
 
 var clicloud = require('clicloud')
@@ -55,7 +55,7 @@ See tinycloud and its CLI for more examples of the resulting functionality.
 
 To give a custom name to your CLI, just provide one during construction
 
-```
+``` js
 var opts = {
 	name: 'mycli'
 }
@@ -69,7 +69,7 @@ Options are formatted in the `cliclopts` style, and it's easy to extend `cliclou
 
 Just define an object with the desired options
 
-```
+``` js
 var opts = {
   options: [
     {
@@ -97,7 +97,7 @@ cloud launch --cooloption=yay
 
 Adding subcommands is similarly easy, just add commands when defining `opts`:
 
-```
+``` js
 var opts = {
   commands: [
     {
